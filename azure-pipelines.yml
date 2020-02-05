@@ -41,7 +41,7 @@ steps:
   inputs:
     command: tag
     imageName: $(imageName)
-    arguments: $(containerRegistry)
+    tags: $(imagetag)
 
 - task: Docker@1
   displayName: List image
