@@ -54,5 +54,4 @@ steps:
     command: push
     repository: $(imageRepository)
     dockerRegistryEndpoint: $(containerRegistry)
-    imageName: bonitatest.azurecr.io/bonita/bonita
-    arguments: 7.10
+    arguments: bonitatest.azurecr.io/bonita/bonita
