@@ -49,5 +49,5 @@ steps:
     command: push
     containerRegistry: $(dockerRegistryServiceConnection)
     repository: $(imageRepository)
-    dockerfile: $(dockerfilePath)
     imageName: $(imagename)
+    arguments: $(imageName)
