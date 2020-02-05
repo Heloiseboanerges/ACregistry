@@ -47,4 +47,5 @@ steps:
   displayName: Push image
   inputs:
     command: push
-    arguments: bonitatest.azurecr.io/bonita/bonita:7.10
+    dockerRegistryEndpoint: $(containerRegistry)
+    imagename: bonitatest.azurecr.io/bonita/bonita:7.10
