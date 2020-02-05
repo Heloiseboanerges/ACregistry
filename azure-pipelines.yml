@@ -34,8 +34,6 @@ steps:
   inputs:
     command: pull
     arguments: $(imageName)
-    tags: |
-      $(tag)
     # Pull an image https://hub.docker.com/_/bonita
 
 - task: Docker@1
@@ -43,7 +41,7 @@ steps:
   inputs:
     command: tag
     imageName: $(imageName)
-    arguments: $(containerRegistry)
+    arguments: $(imageName)
 
 - task: Docker@2
   displayName: Push image
