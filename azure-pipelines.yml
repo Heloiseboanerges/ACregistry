@@ -1,0 +1,45 @@
+# Docker
+# Build and push an image to Azure Container Registry
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-16.04'
+
+  container: ubuntu:16.04
+
+resources:
+- repo: self
+
+variables:
+  # Container registry service connection established during pipeline creation
+  dockerRegistryServiceConnection: '4d92ca97-0412-485d-863b-0adc63468dc3'
+  imageRepository: 'bonita'
+  containerRegistry: 'bonitatest.azurecr.io'
+  dockerfilePath: '**/Dockerfile'
+  tag: '$(Build.BuildId)'
+  imagename: 'bonita:7.10'
+
+steps:
+- task: DockerInstaller@0
+  displayName: Docker Installer
+  inputs:
+    dockerVersion: 17.09.0-ce
+    releaseType: stable
+- task: Docker@1
+  displayName: pull 
+  inputs:
+        command: pull
+        arguments: $(imageName) 
+        # Pull an image https://hub.docker.com/_/bonita
+- task: Docker@2
+  displayName: Push image
+  inputs:
+    containerRegistry: $(dockerRegistryServiceConnection)
+    repository: $(imageRepository)
+    dockerfile: $(dockerfilePath)
+    command: push
+    tags: |
+      $(tag)
