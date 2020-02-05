@@ -41,7 +41,7 @@ steps:
   inputs:
     command: tag
     imageName: $(imageName)
-    arguments: $(imageName)
+    arguments: bonitatest.azurecr.io/bonita/bonita:7.10
 
 - task: Docker@1
   displayName: List image
