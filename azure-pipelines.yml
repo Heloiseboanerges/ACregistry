@@ -54,9 +54,6 @@ steps:
   displayName: Push image
   inputs:
     command: push
-    repository: $(imageRepository)
-    dockerfile: $(dockerfilePath)
     containerRegistry: $(dockerRegistryServiceConnection)
-    tags: |
-      bonitatest.azurecr.io/bonita/bonita:7.10
+
 
