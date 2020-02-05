@@ -52,7 +52,7 @@ steps:
   displayName: Container registry login
   inputs:
     containerregistrytype: Container Registry
-    dockerRegistryEndpoint: $(containerRegistry)
+    dockerRegistryEndpoint: bonitatest.azurecr.io
     command: login
 - task: Docker@1
   displayName: Push image
