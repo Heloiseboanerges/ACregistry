@@ -16,6 +16,7 @@ resources:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '4d92ca97-0412-485d-863b-0adc63468dc3'
+parameters:
   imageRepository: 'bonita'
   containerRegistry: 'bonitatest.azurecr.io'
   dockerfilePath: '**/Dockerfile'
@@ -28,7 +29,7 @@ steps:
   inputs:
     dockerVersion: 17.09.0-ce
     releaseType: stable
-    
+
 - task: Docker@1
   displayName: pull 
   inputs:
