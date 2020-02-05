@@ -41,21 +41,25 @@ steps:
   inputs:
     command: tag
     imageName: $(imageName)
-    tags: $(imagetag)
+    tags: bonitatest.azurecr.io/bonita/bonita:7.10
 
 - task: Docker@1
   displayName: List image
   inputs:
     command: images
 
-- task: Docker@2
+- task: Docker@1
+  displayName: Container registry login
+  inputs:
+    containerregistrytype: Container Registry
+    dockerRegistryEndpoint: $(containerRegistry)
+    command: login
+- task: Docker@1
   displayName: Push image
   inputs:
     command: push
-    containerRegistry: $(dockerRegistryServiceConnection)
-    repository: $(imageRepository)
-    dockerfile: $(dockerfilePath)
-    tags: |
-      $(tag)
+    containerregistrytype: Container Registry
+    dockerRegistryEndpoint: $(containerRegistry)
+    imageName: bonitatest.azurecr.io/bonita/bonita:7.10
 
 
