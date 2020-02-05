@@ -52,7 +52,9 @@ steps:
   displayName: Push image
   inputs:
     command: push
-    containerRegistry: $(containerRegistry)
+    containerRegistry: |
+      $(service-connection)
+    repository: $(imageRepository)
     tags: | 
       bonitatest.azurecr.io/bonita/bonita:7.10
 
