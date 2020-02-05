@@ -20,7 +20,6 @@ variables:
   containerRegistry: 'bonitatest.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   imagename: 'bonita:7.10'
-  tag: '$(imagename)'
   
 
 steps:
@@ -29,6 +28,7 @@ steps:
   inputs:
     dockerVersion: 17.09.0-ce
     releaseType: stable
+    
 - task: Docker@1
   displayName: pull 
   inputs:
