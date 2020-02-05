@@ -20,7 +20,7 @@ variables:
   containerRegistry: 'bonitatest.azurecr.io'
   dockerfilePath: '**/Dockerfile'
   imagename: 'bonita:7.10'
-  imagetag: 'bonitatest.azurecr.io/bonita/bonita:7.10'
+  tag: '$(Build.BuildId)'
 
 steps:
 - task: DockerInstaller@0
@@ -54,6 +54,8 @@ steps:
     command: push
     containerRegistry: $(dockerRegistryServiceConnection)
     repository: $(imageRepository)
-    tags: $(imagetag)
+    dockerfile: $(dockerfilePath)
+    tags: |
+      $(tag)
 
 
