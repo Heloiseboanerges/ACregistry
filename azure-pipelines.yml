@@ -35,15 +35,13 @@ steps:
     command: pull
     arguments: $(imageName)
     # Pull an image https://hub.docker.com/_/bonita
-    tags: |
-      bonitatest.azurecr.io/bonita/bonita:7.10
 
 - task: Docker@1
   displayName: Tag image
   inputs:
     command: tag
     imageName: $(imageName)
-    arguments: $(containerRegistry)/bonita/bonita:7.10
+    arguments: bonitatest.azurecr.io/bonita/bonita:7.10
 
 - task: Docker@1
   displayName: List image
